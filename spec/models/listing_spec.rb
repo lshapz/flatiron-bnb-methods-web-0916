@@ -49,11 +49,11 @@ describe Listing do
     
 
     before :each do
-      @older_reservation = Reservation.create(checkin: 10.days.ago, 
+      @older_reservation = Reservation.create(check_in: 10.days.ago, 
                                               listing: listing, 
-                                              checkout: 5.days.ago, status: 'accepted')
-      @recent_reservation = Reservation.create(checkin: 30.days.ago, 
-                                              listing: listing, checkout: 29.days.ago, 
+                                              check_out: 5.days.ago, status: 'accepted')
+      @recent_reservation = Reservation.create(check_in: 30.days.ago, 
+                                              listing: listing, check_out: 29.days.ago, 
                                               status: 'accepted')
       @older_reservation.guest = bart_simpson
       @older_reservation.save
@@ -221,8 +221,8 @@ describe Listing do
 
   describe "#average_review_rating" do
     before do 
-      recent_reservation = Reservation.create(listing: listing, checkin: 10.days.ago, checkout: 5.days.ago, status: 'accepted')
-      older_reservation = Reservation.create(listing: listing, checkin: 30.days.ago, checkout: 29.days.ago, status: 'accepted')
+      recent_reservation = Reservation.create(listing: listing, check_in: 10.days.ago, check_out: 5.days.ago, status: 'accepted')
+      older_reservation = Reservation.create(listing: listing, check_in: 30.days.ago, check_out: 29.days.ago, status: 'accepted')
       review = Review.create(rating: 1, description: 'it was good', reservation_id: recent_reservation.id)
       other_review = Review.create(rating: 4, description: 'also good', reservation_id: older_reservation.id)
     end
